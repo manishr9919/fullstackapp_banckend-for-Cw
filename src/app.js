@@ -6,8 +6,8 @@ const signupRote = require("../src/Route/user.signup.route");
 const loginRoute = require("../src/Route/user.login.route");
 const app = express();
 app.use(express.json());
-app.use("/signup", signupRote);
-app.use("/signin", loginRoute);
+// app.use("/signup", signupRote);
+// app.use("/signin", loginRoute);
 app.get("/", (req, res) => {
   res.send("ok");
 });
