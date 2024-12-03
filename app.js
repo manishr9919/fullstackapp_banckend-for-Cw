@@ -4,11 +4,14 @@ const PORT = process.env.PORT || 5000;
 const connect = require("./config/db");
 const signupRote = require("./src/Route/user.signup.route");
 const loginRoute = require("./src/Route/user.login.route");
+const cors = require("cors");
 const registration = require("./src/model/user.signUp.model");
 const app = express();
+
 app.use(express.json());
-app.use("/signup", signupRote);
-app.use("/signin", loginRoute);
+app.use(cors());
+// app.use("/signup", signupRote);
+// app.use("/signin", loginRoute);
 app.get("/", (req, res) => {
   res.send("ok");
 });
