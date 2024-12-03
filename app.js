@@ -10,8 +10,8 @@ const app = express();
 
 app.use(express.json());
 app.use(cors());
-// app.use("/signup", signupRote);
-// app.use("/signin", loginRoute);
+app.use("/signup", signupRote);
+app.use("/signin", loginRoute);
 app.get("/", (req, res) => {
   res.send("ok");
 });
