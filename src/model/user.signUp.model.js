@@ -9,7 +9,8 @@ const signUpSchema = new mongoose.Schema(
     dob: { type: String, required: true },
     role: {
       type: String,
-      enum: ["user", "admin", "moderator"],
+      enum: ["user", "admin", "author"],
+      default: "user",
       required: true,
     }, // Properly closed this object
   },

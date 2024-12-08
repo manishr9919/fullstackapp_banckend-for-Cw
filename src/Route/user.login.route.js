@@ -26,13 +26,13 @@ loginRoute.post("/login", async (req, res) => {
 
     // Generate a token
     const token = jwt.sign(
-      { userId: user._id, email: user.email },
+      { userId: user._id, email: user.email, role: user.role },
       SECRET_KEY,
       { expiresIn: "1h" } // Token expiration time
     );
 
     // Attach user data to request
-    req.user = { userId: user._id, email: user.email };
+    req.user = { userId: user._id, email: user.email, role: user.role };
 
     // Send token and user data in the response
     res
