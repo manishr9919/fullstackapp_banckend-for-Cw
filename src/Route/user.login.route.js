@@ -3,6 +3,7 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 const signupModel = require("../model/user.signUp.model"); // Adjust the path to your schema file
 const loginRoute = express.Router();
+// const CheckAssess = require("../middleware/checkAssess");
 
 const SECRET_KEY = process.env.TOKEN_SECRET_KEY; // Replace with a secure key stored in environment variables
 

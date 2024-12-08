@@ -11,3 +11,5 @@ const CheckAssess = (acceptRole) => {
     next();
   };
 };
+
+module.exports = CheckAssess;
