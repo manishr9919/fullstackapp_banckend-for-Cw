@@ -35,9 +35,12 @@ loginRoute.post("/login", async (req, res) => {
     req.user = { userId: user._id, email: user.email, role: user.role };
 
     // Send token and user data in the response
-    res
-      .status(200)
-      .json({ message: "Login successful!", token, user: req.user });
+    res.status(200).json({
+      message: "Login successful!",
+      token,
+      user: req.user,
+      role: user.role,
+    });
   } catch (error) {
     console.error(error);
     res
