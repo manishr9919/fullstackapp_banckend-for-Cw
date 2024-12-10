@@ -6,10 +6,16 @@ const productSchema = new mongoose.Schema(
     price: { type: Number, required: true },
     description: { type: String },
     category: {
-      type: mongoose.Schema.Types.ObjectId,
-      ref: "Category",
+      type: String,
+      enum: [
+        "mobiles",
+        "television",
+        "laptops",
+        "headphones & earphones",
+        "kitchen appliances",
+      ],
       required: true,
-    }, // Relation to Category
+    }, // Enum for predefined categories
     stock: { type: Number, default: 0 },
     imageUrl: { type: String }, // Optional
   },
