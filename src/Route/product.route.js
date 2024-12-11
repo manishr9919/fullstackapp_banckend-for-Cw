@@ -8,6 +8,7 @@ const router = express.Router();
 router.post("/addProduct", upload.single("image"), async (req, res) => {
   try {
     const { name, price, description, category, stock } = req.body;
+    console.log(req.body)
 
     // Validate required fields
     if (!name || !price || !category) {
@@ -19,12 +20,10 @@ router.post("/addProduct", upload.single("image"), async (req, res) => {
     // Upload image to Cloudinary
     let imageUrl = null;
     if (req.file) {
-      const result = await cloudinary.uploader.upload(req.file.path, {
-        folder: "products",
-        use_filename: true,
-        resource_type: "image",
-      });
-      imageUrl = result.secure_url;
+      // console.log(res.file);
+      const fileUpload = await cloudinary.uploader.upload(req.file.path);
+      imageUrl = fileUpload.secure_url;
+      // console.log(imageUrl);
     }
 
     // Create new product
