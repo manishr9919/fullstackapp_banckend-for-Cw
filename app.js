@@ -13,7 +13,8 @@ app.use(express.json());
 app.use(cors());
 app.use("/signup", signupRote);
 app.use("/signin", loginRoute);
-app.use("/product",productRoute);
+app.use("/product", productRoute);
+
 app.get("/", (req, res) => {
   res.send("ok");
 });
@@ -29,14 +30,17 @@ app.get("/getAllUser", async (req, res) => {
   }
 });
 
-app.listen(PORT, async () => {
+
+
+const startServer = async () => {
   try {
-    await connect();
-    console.log(`server is running on ${PORT}`);
-  } catch (error) {
-    console.log({
-      message: "error while running server ",
-      error: error.message,
+    await connect(); // ✅ Connect to DB first
+    app.listen(PORT, () => {
+      console.log(`✅ Server is running on http://localhost:${PORT}`);
     });
+  } catch (error) {
+    console.log("❌ Error starting server:", error.message);
   }
-});
+};
+
+startServer();
